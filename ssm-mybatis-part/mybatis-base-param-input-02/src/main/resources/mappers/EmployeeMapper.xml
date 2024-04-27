@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.ls.mapper.EmployeeMapper">
+<!--
+          1.  #{}   占位符 + 赋值
+                如下 emp_id = #{id}  emp_id = ?    然后用参数赋值给？
+
+          2. ${}  拼接字符串
+                 如下 emp_id = ${id}
+                   过程为  "emp_id =" + "id"
+
+  -->
+<!--    <select id="findOneBy" resultType="com.ls.pojo.Employee">-->
+<!--        select emp_id empId,emp_name empName, emp_salary empSalary from-->
+<!--        t_emp where emp_id = #{empId}-->
+<!--    </select>-->
+
+
+    <select id="findOneBy" resultType="com.ls.pojo.Employee">
+        select emp_id empId,emp_name empName, emp_salary empSalary from
+        t_emp where emp_id = ${empId}
+    </select>
+
+<!--     输入参数场景
+        场景1 ： 单个简单类型输入。 #{key} 随便命名，但是推荐以属性命名
+        场景2 :  单个实体对象输入。 #{key} key以对象的属性名命名。
+ -->
+    <delete id="deleteById">
+        delete from t_emp where emp_id = #{hhhh}
+    </delete>
+
+    <insert id="insertEmployee">
+        insert into t_emp (emp_id,emp_name,emp_salary) values(#{empId},#{empName},#{empSalary})
+    </insert>
+</mapper>

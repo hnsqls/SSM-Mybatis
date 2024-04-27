@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    ibatis方式对数据库crud
+    1. 不要求写接口
+    2. 直接创建mapper.xml ，编写sql
+            namespace="xxx" 没有要求。仅作为后续寻找sql语句的标识
+
+    3. 内部通过crud标签声明sql
+            select update  delete
+            id  无任何要求，仅作为后续寻找sql语句的标识
+            resultType 返回结果的全限定符
+            
+-->
+<mapper namespace="aa">
+    <select id="bbb" resultType="com.ls.pojo.Student">
+        select * from students where sid = #{id}
+    </select>
+
+</mapper>
